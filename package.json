@@ -1,0 +1,21 @@
+{
+  "name": "8.1-mobileapp-typescript-intro-lesson-main",
+  "version": "1.0.0",
+  "description": "> Mobile Considerations · Native vs Cross-Platform · React Native · Expo · TypeScript",
+  "main": "js-conversion.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsmb95/8.1-MobileApp-TypeScript-Intro-Lesson-Main.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dsmb95/8.1-MobileApp-TypeScript-Intro-Lesson-Main/issues"
+  },
+  "homepage": "https://github.com/dsmb95/8.1-MobileApp-TypeScript-Intro-Lesson-Main#readme"
+}

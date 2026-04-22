@@ -1,53 +1,59 @@
- // ─── 1. VARIABLE TYPES ────────────────────────────────────────────────────────
+// ─── 1. VARIABLE TYPES ────────────────────────────────────────────────────────
 
-let username = "Maya";
-let age = 28;
-let isLoggedIn = true;
+let username:string = "Maya";
+let age:number = 28;
+let isLoggedIn:boolean = true;
 
 // ─── 2. ARRAYS ────────────────────────────────────────────────────────────────
 
-let scores = [90, 85, 78];
-let tags = ["react", "typescript", "mobile"];
+let scores:number[] = [90, 85, 78];
+let tags:string[] = ["react", "typescript", "mobile"];
 
 // ─── 3. UNION TYPES ───────────────────────────────────────────────────────────
 // A value that can be one of several types
 
-let id = "abc123";
+let id:string|number = "abc123";
 // id = 42; // should also be valid after conversion
 
 // ─── 4. FUNCTIONS ─────────────────────────────────────────────────────────────
 
-function greet(name) {
+function greet(name:string):string {
   return "Hello, " + name;
 }
 
-function logMessage(message) {
+function logMessage(message:string):void {
   console.log(message);
   // returns nothing — what type is that?
 }
 
-const add = (a, b) => a + b;
+const add = (a:number, b:number):number => a + b;
 
 // ─── 5. OPTIONAL AND DEFAULT PARAMETERS ──────────────────────────────────────
 
-function greetWithTitle(name, title) {
+function greetWithTitle(name:string, title?:string):string {
   if (title) {
     return `Hello, ${title} ${name}`;
   }
   return `Hello, ${name}`;
 }
 
-function greetWithDefault(name, greeting = "Hello") {
+function greetWithDefault(name:string, greeting:string = "Hello"):string {
   return `${greeting}, ${name}`;
 }
 
 // ─── 6. INTERFACES ────────────────────────────────────────────────────────────
 
-function printUser(user) {
+interface User {
+    id: number,
+    name: string,
+    email: string
+}
+
+function printUser(user:User) {
   console.log(`${user.name} — ${user.email}`);
 }
 
-const newUser = {
+const newUser:User = {
   id: 1,
   name: "Priya",
   email: "priya@example.com",
@@ -57,8 +63,19 @@ printUser(newUser);
 
 // ─── 7. OPTIONAL PROPERTIES ───────────────────────────────────────────────────
 
-const itemWithDesc = { id: 1, name: "Keyboard", description: "Mechanical" };
-const itemWithout  = { id: 2, name: "Mouse" }; // description missing — that's fine
+interface Item {
+    id: number,
+    name: string,
+    description?: string
+}
+
+const itemWithDesc:Item = { id: 1, name: "Keyboard", description: "Mechanical" };
+const itemWithout:Item  = { id: 2, name: "Mouse" }; // description missing — that's fine
+
+const printItem = (item:Item) => {
+    console.log(`${item.name} - ${item.description}`)
+}
+printItem(itemWithDesc);
 
 // ─── 8. TYPE ALIASES ──────────────────────────────────────────────────────────
 
@@ -70,34 +87,37 @@ printCoord({ x: 10, y: 20 });
 
 // ─── 9. ENUMS ─────────────────────────────────────────────────────────────────
 
-const Role = {
-  Admin: "admin",
-  Editor: "editor",
-  Viewer: "viewer",
+enum Role {
+  Admin = "administrator access",
+  Editor = "editor",
+  Viewer = "viewer",
 };
 
-let currentRole = Role.Admin;
+let currentRole:Role = Role.Admin;
 console.log(currentRole);
 
 // ─── 10. GENERICS ─────────────────────────────────────────────────────────────
-// A function that works with any type but stays consistent
+// A function that works with any type but stays consistent. Creates a one-to-one mapping, the type of input will be mapped to the type of output..
 
-function identity(arg) {
+function identity<T>(arg:T) {
   return arg;
 }
 
-const result1 = identity("hello");
-const result2 = identity(42);
+const result1 = identity<string>("hello");
+const result2 = identity<number>(42);
 
 // ─── 11. CLASSES ──────────────────────────────────────────────────────────────
 
 class Person {
-  constructor(name, age) {
+    name: string;
+    age: number;
+
+  constructor(name:string, age:number) {
     this.name = name;
     this.age = age;
   }
 
-  greet() {
+  greet():string {
     return `Hi, I'm ${this.name}`;
   }
 }
@@ -107,7 +127,7 @@ console.log(person.greet());
 
 // ─── 12. MODULES ──────────────────────────────────────────────────────────────
 
-function add2(x, y) {
+function add2(x:number, y:number):number {
   return x + y;
 }
 
